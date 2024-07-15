@@ -48,9 +48,21 @@ namespace LibraryTDD
             if (this.available)
                 this.available = false;
         }
+        public string getTitle()
+        {
+            return this.name;
+        }
+        public string getAuthor()
+        {
+            return this.author_name;
+        }
         public int getPublicationYear()
         {
             return this.publication_year;
+        }
+        public bool getAvailable()
+        {
+            return this.available;
         }
         public string ToString()
         {
