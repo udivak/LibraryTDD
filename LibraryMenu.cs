@@ -25,9 +25,9 @@ namespace LibraryTDD
             var new_book_form = new AddBook();
             new_book_form.Show();
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void GenerateBTN(object sender, EventArgs e)
         {
-            GenerateBooks(10000);
+            books = Book.GenerateBooks(10000);
             MessageBox.Show("10,000 books have been generated and added to the list.",
                             "Generation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
