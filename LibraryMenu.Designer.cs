@@ -70,7 +70,7 @@ namespace LibraryTDD
             this.button1.Text = "Insert a Book Manually";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.addBookManually);
             // 
             // button2
             // 
@@ -93,7 +93,7 @@ namespace LibraryTDD
             this.button2.Text = "Generate 10k Books";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.generateBooks);
             // 
             // button3
             // 
@@ -116,7 +116,7 @@ namespace LibraryTDD
             this.button3.Text = "Generate Report";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.generateBookReport);
             // 
             // pictureBox1
             // 

@@ -20,6 +20,7 @@ namespace LibraryTDD
             
         }
     }
+
     public class Book
     {
         private string ISBN;
@@ -42,16 +43,102 @@ namespace LibraryTDD
             this.category = category;
             this.available = status;
         }
-        public void setAvailable()
+        public static List<Book> GenerateBooks(int count)
         {
-            if (!this.available) 
-                this.available = true;
+            List<Book> generated_books = new List<Book>();
+            Random random = new Random();
+            HashSet<string> usedISBNs = new HashSet<string>();
+            string[] categories = { "Novel", "Science Fiction", "History", "Biography", "Kids" };
+            string[] firstNames = { "John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Lisa", "William", "Emma" };
+            string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez" };
+
+            for (int i = 0; i < count; i++)
+            {
+                // Generate unique ISBN
+                string isbn;
+                do
+                {
+                    isbn = (10000 + random.Next(90000)).ToString();
+                } while (!usedISBNs.Add(isbn));
+
+                // Generate random name
+                string name = $"Book {i + 1}";
+
+                // Generate random author name
+                string authorName = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}";
+
+                // Generate random publication year (let's say between 1900 and 2023)
+                int publicationYear = random.Next(1900, 2024);
+
+                // Random category
+                string category = categories[random.Next(categories.Length)];
+
+                // Random availability
+                bool available = random.Next(2) == 0;
+
+                // Create and add the book
+                Book newBook = new Book(isbn, name, authorName, publicationYear, category, available);
+                generated_books.Add(newBook);
+            }
+            return generated_books;
         }
-        public void setBorrowed()
+        public static (List<Book>, double) BubbleSortBooksByYear(List<Book> inputBooks)
         {
-            if (this.available)
-                this.available = false;
+            List<Book> sortedBooks = new List<Book>(inputBooks);
+            int n = sortedBooks.Count;
+
+            DateTime startTime = DateTime.Now;
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (sortedBooks[j].getPublicationYear() < sortedBooks[j + 1].getPublicationYear())
+                    {
+                        // Swap
+                        var temp = sortedBooks[j];
+                        sortedBooks[j] = sortedBooks[j + 1];
+                        sortedBooks[j + 1] = temp;
+                    }
+                }
+            }
+
+            DateTime endTime = DateTime.Now;
+            double sortingTime = (endTime - startTime).TotalMilliseconds;
+
+            MessageBox.Show($"Sorting time: {sortingTime} milliseconds");
+
+            // Check if the function returns a value
+            if (sortedBooks == null)
+            {
+                bookReport.textBox1.AppendText("Error: Sort function did not return a value.\r\n");
+                //return (inputBooks, sortingTime);
+            }
+
+            // Check if the sorted array has lost records
+            if (sortedBooks.Count != inputBooks.Count)
+            {
+                bookReport.textBox1.AppendText("Error: Sorted array has lost records.\r\n");
+                // return (inputBooks, sortingTime);
+            }
+
+            // Check if the array is indeed sorted
+            for (int i = 0; i < sortedBooks.Count - 1; i++)
+            {
+                if (sortedBooks[i].getPublicationYear() < sortedBooks[i + 1].getPublicationYear())
+                {
+                    bookReport.textBox1.AppendText("Error: Array is not correctly sorted.\r\n");
+                    //  return (inputBooks, sortingTime);
+                }
+            }
+
+            bookReport.textBox1.AppendText("Sort function passed all checks.\r\n\r\n");
+            return (sortedBooks, sortingTime);
         }
+
+
+
+
         public string getTitle()
         {
             return this.name;
