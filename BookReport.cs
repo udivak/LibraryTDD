@@ -19,8 +19,14 @@ namespace LibraryTDD
             InitializeComponent();
             textBox1 = new TextBox();
             textBox1.Multiline = true;
+            textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Dock = DockStyle.Fill;
             this.Controls.Add(textBox1);
+        }
+
+        private void BookReport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

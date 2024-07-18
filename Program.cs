@@ -31,6 +31,10 @@ namespace LibraryTDD
 
         public Book(string ISBN, string name, string author_name, int publication_year, string category, bool status)
         {
+            if (!author_name.All(char.IsLetter))
+                throw new ArgumentException("Author name can be letters only.");
+            if (publication_year < 1900 || publication_year > 2024)
+                throw new ArgumentException("Publication year can between 1900-2024.");
             this.ISBN = ISBN;
             this.name = name;
             this.author_name = author_name;
