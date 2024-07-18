@@ -16,11 +16,9 @@ namespace LibraryTDD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LibraryMenu());
-            
+            Application.Run(new LibraryMenu());    
         }
     }
-
     public class Book
     {
         private string ISBN;
@@ -32,10 +30,13 @@ namespace LibraryTDD
 
         public Book(string ISBN, string name, string author_name, int publication_year, string category, bool status)
         {
-            if (!author_name.All(char.IsLetter))
-                throw new ArgumentException("Author name can be letters only.");
+            foreach (string a_n in author_name.Split())
+            {
+                if (!a_n.All(char.IsLetter))
+                    throw new ArgumentException("Author name can be letters only.");
+            }
             if (publication_year < 1900 || publication_year > 2024)
-                throw new ArgumentException("Publication year can between 1900-2024.");
+                throw new ArgumentException("Publication year must be between 1900-2024.");
             this.ISBN = ISBN;
             this.name = name;
             this.author_name = author_name;
@@ -86,9 +87,7 @@ namespace LibraryTDD
         {
             List<Book> sortedBooks = new List<Book>(inputBooks);
             int n = sortedBooks.Count;
-
             DateTime startTime = DateTime.Now;
-
             for (int i = 0; i < n - 1; i++)
             {
                 for (int j = 0; j < n - i - 1; j++)
@@ -102,12 +101,10 @@ namespace LibraryTDD
                     }
                 }
             }
-
             DateTime endTime = DateTime.Now;
             double sortingTime = (endTime - startTime).TotalMilliseconds;
-
             MessageBox.Show($"Sorting time: {sortingTime} milliseconds");
-
+            /*
             // Check if the function returns a value
             if (sortedBooks == null)
             {
@@ -132,13 +129,55 @@ namespace LibraryTDD
                 }
             }
 
-            bookReport.textBox1.AppendText("Sort function passed all checks.\r\n\r\n");
+            bookReport.textBox1.AppendText("Sort function passed all checks.\r\n\r\n");*/
             return (sortedBooks, sortingTime);
         }
+        public static (List<Book>, double) QuickSortByYear(List<Book> unsortedBooks)
+        {
+            List<Book> sortedBooks = new List<Book>(unsortedBooks);
+            DateTime startTime = DateTime.Now;
 
+            QuickSort(sortedBooks, 0, sortedBooks.Count - 1);
 
-
-
+            DateTime endTime = DateTime.Now;
+            double sortingTime = (endTime - startTime).TotalMilliseconds;
+            MessageBox.Show($"Sorting time: {sortingTime} milliseconds");
+            return (sortedBooks, sortingTime);
+        }
+        private static void QuickSort(List<Book> books, int low, int high)
+        {
+            if (low < high)
+            {
+                int partitionIndex = Partition(books, low, high);
+                QuickSort(books, low, partitionIndex - 1);
+                QuickSort(books, partitionIndex + 1, high);
+            }
+        }
+        private static int Partition(List<Book> books, int low, int high)
+        {
+            Book pivot = books[high];
+            int i = low - 1;
+            for (int j = low; j < high; j++)
+            {
+                if (books[j].getPublicationYear() > pivot.getPublicationYear())
+                {
+                    i++;
+                    Swap(books, i, j);
+                }
+            }
+            Swap(books, i + 1, high);
+            return i + 1;
+        }
+        private static void Swap(List<Book> books, int i, int j)
+        {
+            Book temp = books[i];
+            books[i] = books[j];
+            books[j] = temp;
+        }
+        public static double calclAverageYear(List<Book> inputBooks)
+        {
+            return inputBooks.Any() ? inputBooks.Average(b => b.getPublicationYear()) : 0;
+        }
         public string getTitle()
         {
             return this.name;

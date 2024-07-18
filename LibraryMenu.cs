@@ -32,24 +32,19 @@ namespace LibraryTDD
             MessageBox.Show("10,000 books have been generated and added to the list.",
                             "Generation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        public double AverageYearCalc(List<Book> inputBooks)    //take to Book
-        {
-            return inputBooks.Any() ? inputBooks.Average(b => b.getPublicationYear()) : 0;
-        }
-
         private void GenerateBookReport()
         {
             List<Book> sortedbooks = null;
             var (sortedBooks, sortingTime) = Book.BubbleSortBooksByYear(books);
+            //var (sortedBooks, sortingTime) = Book.QuickSortByYear(books);
             if (sortedBooks == null)
                 throw new ArgumentNullException("Bubble Sort returned null");
             int totalBooks = sortedBooks.Count;
-            double avg = AverageYearCalc(sortedBooks);  //Book
+            double avg = Book.calclAverageYear(sortedBooks);  //Book
             int availableForLoan = sortedBooks.Count(b => b.ToString().Contains("Status = In Stock"));
-
+            
             bookReport.textBox1.Clear(); // Clear previous content
-            bookReport.textBox1.AppendText("Book Repoooooort - Sorted by Year of Publication (Descending)\r\n");
+            bookReport.textBox1.AppendText("Book Report - Sorted by Year of Publication (Descending)\r\n");
             bookReport.textBox1.AppendText("--------------------------------------------------------\r\n");
             int i = 1;
             foreach (var book in sortedBooks)
@@ -67,7 +62,7 @@ namespace LibraryTDD
             bookReport.textBox1.AppendText($"Total number of books: {totalBooks}\r\n");
             bookReport.textBox1.AppendText($"Average year of publication: {avg:F2}\r\n");
             bookReport.textBox1.AppendText($"Number of books available for loan: {availableForLoan}\r\n");
-
+            
             bookReport.Show(); // Show the BookReport window
         }
 
