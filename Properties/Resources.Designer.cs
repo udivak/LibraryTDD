@@ -93,9 +93,29 @@ namespace LibraryTDD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bookwhite {
+            get {
+                object obj = ResourceManager.GetObject("bookwhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap closedbooks {
             get {
                 object obj = ResourceManager.GetObject("closedbooks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap closewhite {
+            get {
+                object obj = ResourceManager.GetObject("closewhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

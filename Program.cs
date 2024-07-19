@@ -30,13 +30,30 @@ namespace LibraryTDD
 
         public Book(string ISBN, string name, string author_name, int publication_year, string category, bool status)
         {
+            if (string.IsNullOrWhiteSpace(ISBN) || !ISBN.All(char.IsDigit))
+                throw new ArgumentException("ISBN must be a digit number.");
+
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Book name cannot be empty or whitespace.");
+
+            if (string.IsNullOrWhiteSpace(author_name))
+                throw new ArgumentException("Author name cannot be empty or whitespace.");
+
+            if (author_name.All(char.IsDigit))
+                throw new ArgumentException("Author name cannot be a number.");
+
             foreach (string a_n in author_name.Split())
             {
                 if (!a_n.All(char.IsLetter))
-                    throw new ArgumentException("Author name can be letters only.");
+                    throw new ArgumentException("Author name can contain letters only.");
             }
+
             if (publication_year < 1900 || publication_year > 2024)
-                throw new ArgumentException("Publication year must be between 1900-2024.");
+                throw new ArgumentException($"Publication year must be between 1900 and 2024.");
+
+            // Validate category
+            if (string.IsNullOrWhiteSpace(category))
+                throw new ArgumentException("Category cannot be empty or whitespace.");
             this.ISBN = ISBN;
             this.name = name;
             this.author_name = author_name;
@@ -53,6 +70,18 @@ namespace LibraryTDD
             string[] firstNames = { "John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Lisa", "William", "Emma" };
             string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez" };
 
+            // List of words to generate book titles
+            string[] titleWords = { "The", "A", "One", "Last", "First", "Great", "Little", "Long", "Short", "Old", "New", "Good", "Best", "Worst",
+                            "Hidden", "Lost", "Found", "Forgotten", "Remembered", "Broken", "Fixed", "Magic", "Secret", "Mystery", "Adventure",
+                            "Journey", "Quest", "Tale", "Story", "Chronicle", "Saga", "Epic", "Legend", "Myth", "Fable", "Parable", "Allegory",
+                            "Man", "Woman", "Boy", "Girl", "Child", "Hero", "Villain", "King", "Queen", "Prince", "Princess", "Knight", "Wizard",
+                            "Witch", "Dragon", "Beast", "Creature", "Monster", "Angel", "Demon", "God", "Goddess", "Spirit", "Ghost", "Shadow",
+                            "Light", "Dark", "Night", "Day", "Dawn", "Dusk", "Twilight", "Midnight", "Noon", "Morning", "Evening", "Winter",
+                            "Spring", "Summer", "Autumn", "Year", "Century", "Millennium", "Eternity", "Time", "Space", "World", "Universe",
+                            "Galaxy", "Star", "Planet", "Moon", "Sun", "Earth", "Fire", "Water", "Air", "Wind", "Storm", "Thunder", "Lightning",
+                            "Rain", "Snow", "Ice", "Frost", "Mist", "Fog", "Cloud", "Sky", "Heaven", "Hell", "Paradise", "Eden", "Utopia",
+                            "Dystopia", "City", "Town", "Village", "Castle", "Palace", "Tower", "Bridge", "Road", "Path", "Way", "Gate", "Door" };
+
             for (int i = 0; i < count; i++)
             {
                 // Generate unique ISBN
@@ -62,14 +91,20 @@ namespace LibraryTDD
                     isbn = (10000 + random.Next(90000)).ToString();
                 } while (!usedISBNs.Add(isbn));
 
-                // Generate random name
-                string name = $"Book {i + 1}";
+                // Generate random book name
+                int wordCount = random.Next(2, 5);  // Generate titles with 2 to 4 words
+                List<string> titleWordList = new List<string>();
+                for (int j = 0; j < wordCount; j++)
+                {
+                    titleWordList.Add(titleWords[random.Next(titleWords.Length)]);
+                }
+                string name = string.Join(" ", titleWordList);
 
                 // Generate random author name
                 string authorName = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}";
 
-                // Generate random publication year (let's say between 1900 and 2023)
-                int publicationYear = random.Next(1900, 2024);
+                // Generate random publication year (let's say between 1900 and current year)
+                int publicationYear = random.Next(1900, DateTime.Now.Year + 1);
 
                 // Random category
                 string category = categories[random.Next(categories.Length)];
@@ -178,6 +213,10 @@ namespace LibraryTDD
         {
             return inputBooks.Any() ? inputBooks.Average(b => b.getPublicationYear()) : 0;
         }
+        public string getISBN()
+        {
+            return ISBN;
+        }
         public string getTitle()
         {
             return this.name;
@@ -189,6 +228,10 @@ namespace LibraryTDD
         public int getPublicationYear()
         {
             return this.publication_year;
+        }
+        public string getCategory() 
+        {
+            return category; 
         }
         public bool getAvailable()
         {
