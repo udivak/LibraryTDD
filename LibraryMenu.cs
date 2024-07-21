@@ -40,10 +40,10 @@ namespace LibraryTDD
             if (sortedBooks == null)
                 throw new ArgumentNullException("Bubble Sort returned null");
             int totalBooks = sortedBooks.Count;
-            double avg = Book.calclAverageYear(sortedBooks);  //Book
+            double avg = Book.calclAverageYear(sortedBooks);
             int availableForLoan = sortedBooks.Count(b => b.ToString().Contains("Status = In Stock"));
             
-            bookReport.textBox1.Clear(); // Clear previous content
+            bookReport.textBox1.Clear();        // Clear previous content
             bookReport.textBox1.AppendText("Book Report - Sorted by Year of Publication (Descending)\r\n");
             bookReport.textBox1.AppendText("--------------------------------------------------------\r\n");
             int i = 1;
