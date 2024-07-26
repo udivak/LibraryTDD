@@ -56,7 +56,7 @@ namespace LibraryTDD
             // Display books in the BookReport form
             bookReport.DisplayBooks(sortedBooks);
             // Display sorting time and average year
-            MessageBox.Show($"Sorting completed in {sortingTime} milliseconds.\nAverage publication year: {averageYear:F2}",
+            MessageBox.Show($"Sorting completed in {sortingTime} milliseconds.",
                             "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // Show the BookReport form
             bookReport.Show();

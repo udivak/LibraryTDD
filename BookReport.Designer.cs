@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewBook = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +40,8 @@
             this.PublicationYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Available = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBook)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
@@ -89,25 +90,11 @@
             this.dataGridViewBook.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewBook.GridColor = System.Drawing.Color.LightSkyBlue;
             this.dataGridViewBook.Location = new System.Drawing.Point(0, 122);
-            this.dataGridViewBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewBook.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewBook.Name = "dataGridViewBook";
             this.dataGridViewBook.ReadOnly = true;
             this.dataGridViewBook.Size = new System.Drawing.Size(1297, 570);
             this.dataGridViewBook.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Garamond", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(92, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(802, 54);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Book Report - Sorted by Publication Year";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Index
             // 
@@ -163,6 +150,34 @@
             this.Available.ReadOnly = true;
             this.Available.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Garamond", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(92, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(873, 54);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Book Report - Sorted by Publication Year";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Garamond", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(96, 73);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 27);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Label2";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // bookBindingSource
             // 
             this.bookBindingSource.DataSource = typeof(LibraryTDD.Book);
@@ -174,10 +189,11 @@
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1297, 692);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridViewBook);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Report";
             this.Text = "Report";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBook)).EndInit();
@@ -198,5 +214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PublicationYear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Available;
+        private System.Windows.Forms.Label label2;
     }
 }

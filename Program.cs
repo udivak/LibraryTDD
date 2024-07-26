@@ -182,6 +182,18 @@ namespace LibraryTDD
         {
             return inputBooks.Any() ? inputBooks.Average(b => b.getPublicationYear()) : 0;
         }
+        public static (int, int) calclAvailableBooks(List<Book> inputBooks)
+        {
+            int available = 0, borrowed = 0;
+            foreach(Book book in inputBooks)
+            {
+                if (book.available)
+                    available++;
+                else
+                    borrowed++;
+            }
+            return (available, borrowed);
+        }
         public string getISBN()
         {
             return ISBN;
@@ -246,3 +258,4 @@ namespace LibraryTDD
         }
     }
 }
+
