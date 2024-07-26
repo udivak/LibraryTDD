@@ -77,9 +77,10 @@ namespace LibraryTDD
                     NewBook = new Book(ISBN.Text, name.Text, author_name.Text, Int32.Parse(publication_year.Text), category, status);
                     LibraryMenu.books.Add(NewBook);
                 }
-                catch (FormatException)
+                catch (Exception exc)
                 {
-                    MessageBox.Show("Invalid Publication Year (input only numbers).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exc.Message, "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }
                 this.Close();
