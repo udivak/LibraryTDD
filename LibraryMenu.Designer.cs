@@ -69,7 +69,7 @@ namespace LibraryTDD
             this.button1.Size = new System.Drawing.Size(317, 90);
             this.button1.TabIndex = 1;
             this.button1.Tag = "btn1";
-            this.button1.Text = "Insert a book";
+            this.button1.Text = "Insert a Book";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.addBookManually);
@@ -93,7 +93,7 @@ namespace LibraryTDD
             this.button2.Size = new System.Drawing.Size(317, 90);
             this.button2.TabIndex = 2;
             this.button2.Tag = "btn2";
-            this.button2.Text = "Generate 10k books";
+            this.button2.Text = "Generate 10k Books";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.generateBooks);
@@ -117,7 +117,7 @@ namespace LibraryTDD
             this.button3.Size = new System.Drawing.Size(317, 86);
             this.button3.TabIndex = 3;
             this.button3.Tag = "btn3";
-            this.button3.Text = "Generate report";
+            this.button3.Text = "Generate Report";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.generateBookReport);

@@ -57,6 +57,5 @@ namespace LibraryTDD
             // Show the BookReport form
             bookReport.Show();
         }
-
     }
 }
