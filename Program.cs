@@ -27,7 +27,6 @@ namespace LibraryTDD
         private int publication_year;
         private string category;
         private bool available;         //true - in stock, false - borrowed
-
         public Book(string ISBN, string name, string author_name, int publication_year, string category, bool status)
         {
             if (string.IsNullOrWhiteSpace(ISBN) || !ISBN.All(char.IsDigit))
@@ -62,7 +61,6 @@ namespace LibraryTDD
             string[] categories = { "Novel", "Science Fiction", "History", "Biography", "Kids" };
             string[] firstNames = { "John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Lisa", "William", "Emma" };
             string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez" };
-
             // List of words to generate book titles
             string[] titleWords = { "The", "A", "One", "Last", "First", "Great", "Little", "Long", "Short", "Old", "New", "Good", "Best", "Worst",
                             "Hidden", "Lost", "Found", "Forgotten", "Remembered", "Broken", "Fixed", "Magic", "Secret", "Mystery", "Adventure",
@@ -74,7 +72,6 @@ namespace LibraryTDD
                             "Galaxy", "Star", "Planet", "Moon", "Sun", "Earth", "Fire", "Water", "Air", "Wind", "Storm", "Thunder", "Lightning",
                             "Rain", "Snow", "Ice", "Frost", "Mist", "Fog", "Cloud", "Sky", "Heaven", "Hell", "Paradise", "Eden", "Utopia",
                             "Dystopia", "City", "Town", "Village", "Castle", "Palace", "Tower", "Bridge", "Road", "Path", "Way", "Gate", "Door" };
-
             for (int i = 0; i < count; i++)
             {
                 // Generate unique ISBN
@@ -83,7 +80,6 @@ namespace LibraryTDD
                 {
                     isbn = (10000 + random.Next(90000)).ToString();
                 } while (!usedISBNs.Add(isbn));
-
                 // Generate random book name
                 int wordCount = random.Next(2, 5);  // Generate titles with 2 to 4 words
                 List<string> titleWordList = new List<string>();
@@ -223,6 +219,30 @@ namespace LibraryTDD
                    $"Publication Year = {publication_year}\n" +
                    $"Category = {category}\n" +
                    $"Status = {status}";
+        }
+        public string getISBN()
+        {
+            return this.ISBN;
+        }
+        public string getName()
+        {
+            return this.name;
+        }
+        public string getAuthorName()
+        {
+            return this.author_name;
+        }
+        public int getPublicationYear()
+        {
+            return this.publication_year;
+        }
+        public string getCategory()
+        {
+            return this.category;
+        }
+        public bool getAvailability()
+        {
+            return this.available;
         }
     }
 }
