@@ -81,8 +81,6 @@ namespace LibraryTDD
                 {
                     MessageBox.Show(exc.Message, "Error",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //MessageBox.Show("Invalid Publication Year (input a year between 1900-2024).", "Error",
-                    //                MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }
                 this.Close();

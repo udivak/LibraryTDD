@@ -32,26 +32,19 @@ namespace LibraryTDD
         {
             if (string.IsNullOrWhiteSpace(ISBN) || !ISBN.All(char.IsDigit))
                 throw new ArgumentException("ISBN must be a digit number.");
-
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Book name cannot be empty or whitespace.");
-
             if (string.IsNullOrWhiteSpace(author_name))
                 throw new ArgumentException("Author name cannot be empty or whitespace.");
-
             if (author_name.All(char.IsDigit))
                 throw new ArgumentException("Author name cannot be a number.");
-
             foreach (string a_n in author_name.Split())
             {
                 if (!a_n.All(char.IsLetter))
                     throw new ArgumentException("Author name can contain letters only.");
             }
-
             if (publication_year < 1900 || publication_year > 2024)
-                throw new ArgumentException($"Publication year must be between 1900 and 2024.");
-
-            // Validate category
+                throw new ArgumentException("Publication year must be between 1900 and 2024.");
             if (string.IsNullOrWhiteSpace(category))
                 throw new ArgumentException("Category cannot be empty or whitespace.");
             this.ISBN = ISBN;
@@ -113,60 +106,41 @@ namespace LibraryTDD
                 bool available = random.Next(2) == 0;
 
                 // Create and add the book
-                Book newBook = new Book(isbn, name, authorName, publicationYear, category, available);
-                generated_books.Add(newBook);
+                try
+                {
+                    Book newBook = new Book(isbn, name, authorName, publicationYear, category, available);
+                    generated_books.Add(newBook);
+                }
+                catch(ArgumentException err)
+                {
+                    MessageBox.Show(err.Message, "Invalid Book's Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }  
             }
             return generated_books;
         }
-        public static (List<Book>, double) BubbleSortBooksByYear(List<Book> inputBooks)
-        {
-            List<Book> sortedBooks = new List<Book>(inputBooks);
-            int n = sortedBooks.Count;
-            DateTime startTime = DateTime.Now;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (sortedBooks[j].getPublicationYear() < sortedBooks[j + 1].getPublicationYear())
-                    {
-                        // Swap
-                        var temp = sortedBooks[j];
-                        sortedBooks[j] = sortedBooks[j + 1];
-                        sortedBooks[j + 1] = temp;
-                    }
-                }
-            }
-            DateTime endTime = DateTime.Now;
-            double sortingTime = (endTime - startTime).TotalMilliseconds;
-            MessageBox.Show($"Sorting time: {sortingTime} milliseconds");
-            /*
-            // Check if the function returns a value
-            if (sortedBooks == null)
-            {
-                bookReport.textBox1.AppendText("Error: Sort function did not return a value.\r\n");
-                //return (inputBooks, sortingTime);
-            }
-
-            // Check if the sorted array has lost records
-            if (sortedBooks.Count != inputBooks.Count)
-            {
-                bookReport.textBox1.AppendText("Error: Sorted array has lost records.\r\n");
-                // return (inputBooks, sortingTime);
-            }
-
-            // Check if the array is indeed sorted
-            for (int i = 0; i < sortedBooks.Count - 1; i++)
-            {
-                if (sortedBooks[i].getPublicationYear() < sortedBooks[i + 1].getPublicationYear())
-                {
-                    bookReport.textBox1.AppendText("Error: Array is not correctly sorted.\r\n");
-                    //  return (inputBooks, sortingTime);
-                }
-            }
-
-            bookReport.textBox1.AppendText("Sort function passed all checks.\r\n\r\n");*/
-            return (sortedBooks, sortingTime);
-        }
+        //public static (List<Book>, double) BubbleSortBooksByYear(List<Book> inputBooks)
+        //{
+        //    List<Book> sortedBooks = new List<Book>(inputBooks);
+        //    int n = sortedBooks.Count;
+        //    DateTime startTime = DateTime.Now;
+        //    for (int i = 0; i < n - 1; i++)
+        //    {
+        //        for (int j = 0; j < n - i - 1; j++)
+        //        {
+        //            if (sortedBooks[j].getPublicationYear() < sortedBooks[j + 1].getPublicationYear())
+        //            {
+        //                // Swap
+        //                var temp = sortedBooks[j];
+        //                sortedBooks[j] = sortedBooks[j + 1];
+        //                sortedBooks[j + 1] = temp;
+        //            }
+        //        }
+        //    }
+        //    DateTime endTime = DateTime.Now;
+        //    double sortingTime = (endTime - startTime).TotalMilliseconds;
+        //    MessageBox.Show($"Sorting time: {sortingTime} milliseconds");
+        //    return (sortedBooks, sortingTime);
+        //}
         public static (List<Book>, double) QuickSortByYear(List<Book> unsortedBooks)
         {
             List<Book> sortedBooks = new List<Book>(unsortedBooks);
@@ -176,7 +150,6 @@ namespace LibraryTDD
 
             DateTime endTime = DateTime.Now;
             double sortingTime = (endTime - startTime).TotalMilliseconds;
-            MessageBox.Show($"Sorting time: {sortingTime} milliseconds");
             return (sortedBooks, sortingTime);
         }
         private static void QuickSort(List<Book> books, int low, int high)
