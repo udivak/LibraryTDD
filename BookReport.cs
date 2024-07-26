@@ -1,26 +1,32 @@
-﻿using System;
+﻿using LibraryTDD;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryTDD
 {
-    public partial class BookReport : Form
+    public partial class Report : Form
     {
-        public TextBox textBox1;
-
-        public BookReport()
+        public Report()
         {
             InitializeComponent();
-            textBox1 = new TextBox();
-            textBox1.Multiline = true;
-            textBox1.Dock = DockStyle.Fill;
-            this.Controls.Add(textBox1);
+        }
+
+        public void DisplayBooks(List<Book> books)
+        {
+            int i = 1;
+            dataGridViewBook.Rows.Clear();
+            foreach (Book book in books)
+            {
+                dataGridViewBook.Rows.Add(
+                    i++,
+                    book.getISBN(),
+                    book.getTitle(),
+                    book.getAuthor(),
+                    book.getPublicationYear(),
+                    book.getCategory(),
+                    book.getAvailable() ? "In Stock" : "Borrowed"
+                );
+            }
         }
     }
 }
