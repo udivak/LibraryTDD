@@ -30,16 +30,10 @@ namespace LibraryTDD
             }
             new_book_form.Show();
         }
-<<<<<<< HEAD
-        private void GenerateBTN(object sender, EventArgs e)
-        {
-            books = Book.GenerateBooks(10000);
-=======
         public void generateBooks(object sender, EventArgs e)
         {
             List<Book> generatedBooks = Book.GenerateBooks(10000);
             books.AddRange(generatedBooks);
->>>>>>> adding-tests
             MessageBox.Show("10,000 books have been generated and added to the list.",
                             "Generation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

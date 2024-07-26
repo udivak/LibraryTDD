@@ -55,19 +55,12 @@ namespace LibraryTDD
         }
         public static List<Book> GenerateBooks(int count)
         {
-<<<<<<< HEAD
-            List<Book> books = new List<Book>();
-=======
             List<Book> generated_books = new List<Book>();
->>>>>>> adding-tests
             Random random = new Random();
             HashSet<string> usedISBNs = new HashSet<string>();
             string[] categories = { "Novel", "Science Fiction", "History", "Biography", "Kids" };
             string[] firstNames = { "John", "Jane", "Michael", "Emily", "David", "Sarah", "Robert", "Lisa", "William", "Emma" };
             string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez" };
-
-<<<<<<< HEAD
-=======
             // List of words to generate book titles
             string[] titleWords = { "The", "A", "One", "Last", "First", "Great", "Little", "Long", "Short", "Old", "New", "Good", "Best", "Worst",
                             "Hidden", "Lost", "Found", "Forgotten", "Remembered", "Broken", "Fixed", "Magic", "Secret", "Mystery", "Adventure",
@@ -79,8 +72,6 @@ namespace LibraryTDD
                             "Galaxy", "Star", "Planet", "Moon", "Sun", "Earth", "Fire", "Water", "Air", "Wind", "Storm", "Thunder", "Lightning",
                             "Rain", "Snow", "Ice", "Frost", "Mist", "Fog", "Cloud", "Sky", "Heaven", "Hell", "Paradise", "Eden", "Utopia",
                             "Dystopia", "City", "Town", "Village", "Castle", "Palace", "Tower", "Bridge", "Road", "Path", "Way", "Gate", "Door" };
-
->>>>>>> adding-tests
             for (int i = 0; i < count; i++)
             {
                 // Generate unique ISBN
@@ -89,26 +80,6 @@ namespace LibraryTDD
                 {
                     isbn = (10000 + random.Next(90000)).ToString();
                 } while (!usedISBNs.Add(isbn));
-<<<<<<< HEAD
-                // Generate random name
-                string name = $"Book {i + 1}";
-                // Generate random author name
-                string authorName = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}";
-                // Generate random publication year (let's say between 1900 and 2023)
-                int publicationYear = random.Next(1900, 2024);
-                // Random category
-                string category = categories[random.Next(categories.Length)];
-                // Random availability
-                bool available = random.Next(2) == 0;
-                // Create and add the book
-                Book newBook = new Book(isbn, name, authorName, publicationYear, category, available);
-                books.Add(newBook);
-            }
-            return books;
-            if (!this.available) 
-                this.available = true;
-=======
-
                 // Generate random book name
                 int wordCount = random.Next(2, 5);  // Generate titles with 2 to 4 words
                 List<string> titleWordList = new List<string>();
@@ -142,7 +113,6 @@ namespace LibraryTDD
                 }  
             }
             return generated_books;
->>>>>>> adding-tests
         }
         //public static (List<Book>, double) BubbleSortBooksByYear(List<Book> inputBooks)
         //{
@@ -228,14 +198,10 @@ namespace LibraryTDD
         {
             return this.publication_year;
         }
-<<<<<<< HEAD
-        public override string ToString()
-=======
         public string getCategory() 
         {
             return category; 
         }
->>>>>>> adding-tests
         public bool getAvailable()
         {
             return this.available;
