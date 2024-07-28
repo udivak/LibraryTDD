@@ -231,8 +231,7 @@ namespace LibraryTDD
                    $"Publication Year = {publication_year}\n" +
                    $"Category = {category}\n" +
                    $"Status = {status}";
-        }
-       
+        }  
     }
 }
 

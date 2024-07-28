@@ -10,7 +10,6 @@ namespace LibraryTDD
         {
             InitializeComponent();
         }
-
         public void DisplayBooks(List<Book> books)
         {
             int avg_publication_year = (int) Book.calclAverageYear(books);
@@ -33,6 +32,5 @@ namespace LibraryTDD
                 );
             }
         }
-
     }
 }

@@ -15,7 +15,6 @@ namespace LibraryTDD
         public static List<Book> books = new List<Book>();
         private Report bookReport;
         private AddBook new_book_form;
-
         public LibraryMenu()
         {
             InitializeComponent();
@@ -32,7 +31,7 @@ namespace LibraryTDD
         }
         public void generateBooks(object sender, EventArgs e)
         {
-            List<Book> generatedBooks = Book.GenerateBooks(10000);
+            List<Book> generatedBooks = Book.GenerateBooks(10_000);
             books.AddRange(generatedBooks);
             MessageBox.Show("10,000 books have been generated and added to the list.",
                             "Generation Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);

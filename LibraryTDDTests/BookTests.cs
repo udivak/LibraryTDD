@@ -73,6 +73,17 @@ namespace LibraryTDD.Tests
             }
         }
         [TestMethod()] //#2
+        public void GenerateBooksTest()
+        {
+            //Arrange
+            List<Book> generatedBooksTest;
+            //Act
+            generatedBooksTest = Book.GenerateBooks(10_000);
+            //Assert
+            Assert.IsNotNull(generatedBooksTest);
+            Assert.AreEqual(generatedBooksTest.Count, 10_000);
+        }
+        [TestMethod()] //#3
         public void calclAverageYearTest()
         {
             //Arrange
@@ -80,22 +91,16 @@ namespace LibraryTDD.Tests
             double avg_func, avg_manual;
             int publication_year_sum = 0;
             //Act
-            avg_func = Book.calclAverageYear(generatedBooksTest);
-            foreach (Book book in generatedBooksTest)
+            avg_func = Book.calclAverageYear(generatedBooksTest);       //func calculation
+            foreach (Book book in generatedBooksTest)                   //manual calculation
             {
                 publication_year_sum += book.getPublicationYear();
             }
-            avg_manual = (double)publication_year_sum / 10_000;
+            avg_manual = (double) publication_year_sum / 10_000;
             //Assert
             Assert.AreEqual(avg_func, avg_manual);
         }
-        [TestMethod()] //#3
-        public void GenerateBooksTest()
-        {
-            List<Book> generatedBooksTest = Book.GenerateBooks(10_000);
-            Assert.IsNotNull(generatedBooksTest);
-            Assert.AreEqual(generatedBooksTest.Count, 10_000);
-        }
+        
         [TestMethod()] //#4
         public void SortBooksByYearTest()
         {
@@ -106,6 +111,7 @@ namespace LibraryTDD.Tests
             //Act
             (sortedBooks, sortingTime) = Book.QuickSortByYear(generatedBooksTest);
             //Assert
+            //
             Assert.IsNotNull(sortedBooks);
             Assert.AreEqual(sortedBooks.Count, 10_000);
             for (int i = 0; i < 10_000 - 1; i++)
