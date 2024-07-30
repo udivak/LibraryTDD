@@ -89,11 +89,11 @@
             this.dataGridViewBook.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewBook.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewBook.GridColor = System.Drawing.Color.LightSkyBlue;
-            this.dataGridViewBook.Location = new System.Drawing.Point(0, 122);
+            this.dataGridViewBook.Location = new System.Drawing.Point(0, 152);
             this.dataGridViewBook.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewBook.Name = "dataGridViewBook";
             this.dataGridViewBook.ReadOnly = true;
-            this.dataGridViewBook.Size = new System.Drawing.Size(1297, 570);
+            this.dataGridViewBook.Size = new System.Drawing.Size(1345, 570);
             this.dataGridViewBook.TabIndex = 0;
             // 
             // Index
@@ -188,7 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1297, 692);
+            this.ClientSize = new System.Drawing.Size(1345, 722);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridViewBook);
             this.Controls.Add(this.label1);

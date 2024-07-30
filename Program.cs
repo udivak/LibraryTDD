@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/*
+ * Ehud Vaknin 209479088
+ * Moshe Bercovich 206676850
+ * Diana Yekimov 207546060
+ */
 namespace LibraryTDD
 {
     static class Program
@@ -14,6 +18,7 @@ namespace LibraryTDD
         [STAThread]
         static void Main()
         {
+            //Book booky = new Book("-12345", "name", "autor", 2023, "novel", true);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LibraryMenu());    
@@ -30,7 +35,7 @@ namespace LibraryTDD
         public Book(string ISBN, string name, string author_name, int publication_year, string category, bool status)
         {
             if (string.IsNullOrWhiteSpace(ISBN) || !ISBN.All(char.IsDigit))
-                throw new ArgumentException("ISBN must be a digit number.");
+                throw new ArgumentException("ISBN must be a positive digit number.");
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Book name cannot be empty or whitespace.");
             if (string.IsNullOrWhiteSpace(author_name))

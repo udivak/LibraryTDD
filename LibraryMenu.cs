@@ -53,10 +53,10 @@ namespace LibraryTDD
                 bookReport = new Report();
             }
             // Display books in the BookReport form
-            bookReport.DisplayBooks(sortedBooks);
-            // Display sorting time and average year
-            MessageBox.Show($"Sorting completed in {sortingTime} milliseconds.",
-                            "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            bookReport.DisplayBooks(sortedBooks, sortingTime);
+            // Display sorting time
+            //MessageBox.Show($"Sorting completed in {sortingTime} milliseconds.",
+                            //"Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // Show the BookReport form
             bookReport.Show();
         }
